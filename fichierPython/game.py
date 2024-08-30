@@ -19,7 +19,7 @@ class Game:
 
         self.screen = pygame.display.set_mode((1920, 1000))
         pygame.display.set_caption("Pygamon - Aventure")
-        tmx_data = pytmx.util_pygame.load_pygame('bestCarte.tmx')
+        tmx_data = pytmx.util_pygame.load_pygame('../bestCarte.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         self.map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.get_size())
         self.map_layer.zoom = 2
