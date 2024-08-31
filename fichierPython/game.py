@@ -17,7 +17,7 @@ class Game:
         # creation de la fenetre du jeu
         self.panneaux = Panneaux()
 
-        self.screen = pygame.display.set_mode((1920, 1000))
+        self.screen = pygame.display.set_mode((1600, 900))
         pygame.display.set_caption("Pygamon - Aventure")
         tmx_data = pytmx.util_pygame.load_pygame('../bestCarte.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
