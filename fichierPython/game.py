@@ -67,7 +67,7 @@ class Game:
             self.player.change_animation('right')
         elif pressed[pygame.K_a]:  # gestion de la touche A
             if self.panneaux.examenActif:  # il y a un panneau examinable?
-                if self.panneaux.afficheActif == False:
+                if not self.panneaux.afficheActif:
                     # print('tu examines le panneau ', self.panneaux.iPanneau)
                     print(self.panneaux.textes[self.panneaux.iPanneau])
                     self.panneaux.afficheActif = True
@@ -83,7 +83,7 @@ class Game:
                 sprite.move_back()
             iPanneau = sprite.feet.collidelist(self.panneaux.list)
             if iPanneau > -1:
-                if self.panneaux.examenActif == False:
+                if not self.panneaux.examenActif:
                     print('[A] examiner ?')
                     self.panneaux.examenActif = True
                 self.panneaux.iPanneau = iPanneau
