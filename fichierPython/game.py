@@ -27,15 +27,12 @@ class Game:
         ## générer un joueur
         player_position = tmx_data.get_object_by_name("player")
         self.player = Player(player_position.x, player_position.y)
-
         # genere les rectangles de collision
         self.panneaux.examenActif = False
-
         self.walls = []
         self.panneaux.list = []
         iVar = 0
         for obj in tmx_data.objects:
-
             # print(obj.type,obj.properties)
             if obj.type == 'collision':
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))

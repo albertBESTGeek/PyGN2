@@ -1,21 +1,20 @@
 import pygame
 
-
-
 class Player(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
         super().__init__()
         self.sprite_sheet = pygame.image.load('../player8.png')
-        self.image = self.get_image(0, 0)
-        self.image.set_colorkey('#2B2D30')
+        self.image = self.get_image(6*40, 3*40)
+        self.keyColor = '#000000'
+        self.image.set_colorkey(self.keyColor)
         self.rect = self.image.get_rect()
         self.position = [x, y]
         self.images = {
-            'down': self.get_image(0, 0),
-            'left': self.get_image(0, 32),
-            'right': self.get_image(0, 64),
-            'up': self.get_image(0, 96),
+            'down': self.get_image(6*40, 3*40),
+            'left': self.get_image(7*40, 3*40),
+            'right': self.get_image(8*40, 3*40),
+            'up': self.get_image(5*40, 3*40),
         }
         self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 12)
         self.old_position = self.position.copy()
@@ -26,7 +25,7 @@ class Player(pygame.sprite.Sprite):
 
     def change_animation(self, name):
         self.image = self.images[name]
-        self.image.set_colorkey((0, 0, 0))  # transparent color
+        self.image.set_colorkey(self.keyColor)  # transparent color
 
     def move_right(self):
         self.position[0] += self.speed
@@ -50,6 +49,6 @@ class Player(pygame.sprite.Sprite):
         self.feet.midbottom = self.rect.midbottom
 
     def get_image(self, x, y):
-        image = pygame.Surface([50,50])
-        image.blit(self.sprite_sheet, (0, 0), (x, y, 32, 32))
+        image = pygame.Surface([40,40])
+        image.blit(self.sprite_sheet, (0, 0), (x, y, 40, 40))
         return image
